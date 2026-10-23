@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="theme-color" content="#faf5f8">
+    <title>Mis proyectos · ObraMetric Studio</title>
+    <link rel="stylesheet" href="styles.css">
+    <script src="auth.js" defer></script>
+    <script src="app.js" defer></script>
+</head>
+<body class="dashboard-page">
+    <div class="app-shell">
+        <!-- Sidebar -->
+        <aside class="sidebar" id="sidebar">
+            <a href="dashboard.html" class="brand">
+                <span class="brand-mark">✦</span>
+                <span>obra<span class="brand-accent">metric</span><small>STUDIO</small></span>
+            </a>
+            <div class="sidebar-caption">TU ESPACIO</div>
+            <nav class="sidebar-nav" aria-label="Menú">
+                <a class="nav-item active" href="#inicio"><span>◫</span> Vista general</a>
+                <a class="nav-item" href="#herramientas"><span>▦</span> Calculadoras</a>
+                <a class="nav-item" href="#history"><span>◷</span> Mi historial</a>
+            </nav>
+            <div class="sidebar-bottom">
+                <div class="sidebar-art">
+                    <span>✧</span>
+                    <strong>Ideas que toman forma.</strong>
+                    <small>Cada gran proyecto empieza por un buen cálculo.</small>
+                </div>
+                <button type="button" class="nav-item logout-side" id="exit-card"><span>↗</span> Cerrar sesión</button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="app-main">
+            <header class="topbar">
+                <div class="topbar-inner">
+                    <button type="button" class="mobile-menu" id="menu-toggle" aria-label="Abrir menú" aria-expanded="false">☰</button>
+                    <div class="topbar-title">
+                        <span class="eyebrow">MI PANEL</span>
+                        <strong>Mi espacio de trabajo</strong>
+                    </div>
+                    <div class="topbar-actions">
+                        <span class="topbar-date" id="today-label"></span>
+                        <div class="account-pill">
+                            <span class="avatar" id="user-initial">U</span>
+                            <span class="user-name" id="user-name">Usuario</span><span class="role-chip" id="user-role">Usuario</span>
+                        </div>
+                        <button type="button" class="btn btn-outline btn-small" id="logout-btn">Salir ↗</button>
+                    </div>
+                </div>
+            </header>
+
+            <main class="container" id="inicio">
+                <section id="admin-panel" class="admin-panel hidden" aria-label="Panel de administración">
+                    <div class="admin-head"><div><span class="eyebrow">GESTIÓN DE EQUIPO</span><h2>Panel de administración</h2><p>Consulta las cuentas creadas y su actividad en la plataforma.</p></div><span class="admin-icon">♕</span></div>
+                    <div class="table-scroll"><table class="admin-table"><thead><tr><th>Nombre</th><th>Correo</th><th>Rol</th><th>Cálculos</th><th>Registro</th></tr></thead><tbody id="admin-users-body"></tbody></table></div>
+                </section>
+                <!-- Welcome Card -->
+                <section class="welcome-card">
+                    <div class="welcome-copy">
+                        <span class="hero-tag">✧ TU ESPACIO CREATIVO</span>
+                        <h1>Hola, <span id="welcome-name">usuario</span> <span class="wave">✦</span></h1>
+                        <p>Tus ideas merecen buenos cimientos. Elige una calculadora y prepara tu próxima obra con confianza.</p>
+                        <a href="#herramientas" class="btn btn-light">Explorar calculadoras <span>↗</span></a>
+                    </div>
+                    <div class="welcome-art">
+                        <span class="art-orbit orbit-one"></span>
+                        <span class="art-orbit orbit-two"></span>
+                        <!-- Reutilizamos la imagen aquí -->
+                        <img src="assets/architecture.svg" alt="Ilustración arquitectónica decorativa">
+                    </div>
+                </section>
+
+                <!-- Stats -->
+                <section class="dashboard-stat-row" aria-label="Resumen">
+                    <div class="stat">
+                        <div class="stat-icon">◷</div>
+                        <div><span>Cálculos guardados</span><strong id="total-calculations">0</strong></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon lilac">▦</div>
+                        <div><span>Tipos utilizados</span><strong id="types-used">0 / 7</strong></div>
+                    </div>
+                    <div class="stat">
+                        <div class="stat-icon peach">✧</div>
+                        <div><span>Último cálculo</span><strong id="latest-calculation" class="stat-date">Sin registros</strong></div>
+                    </div>
+                </section>
+
+                <!-- Herramientas (Calculadoras) -->
+                <section class="section-heading" id="herramientas">
+                    <div>
+                        <span class="eyebrow">EMPIEZA POR AQUÍ</span>
+                        <h2>¿Qué vamos a calcular hoy?</h2>
+                        <p class="muted">Selecciona una herramienta y completa las medidas de tu proyecto.</p>
+                    </div>
+                    <span class="section-decoration">✳</span>
+                </section>
+
+                <section class="calculator-grid" aria-label="Calculadoras">
+                    <button class="tool-card tool-muro" data-calculator="muro" type="button">
+                        <span class="tool-top"><span class="tool-icon">▦</span><span class="tool-index">01 / 07</span></span>
+                        <span class="tool-name">Muro de ladrillo</span>
+                        <span class="tool-description">Cemento, arena y ladrillos</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-viga" data-calculator="viga" type="button">
+                        <span class="tool-top"><span class="tool-icon">━</span><span class="tool-index">02 / 07</span></span>
+                        <span class="tool-name">Viga de hormigón</span>
+                        <span class="tool-description">Materiales por metro lineal</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-columna" data-calculator="columna" type="button">
+                        <span class="tool-top"><span class="tool-icon">▥</span><span class="tool-index">03 / 07</span></span>
+                        <span class="tool-name">Columna de hormigón</span>
+                        <span class="tool-description">Concreto y acero</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-contrapiso" data-calculator="contrapiso" type="button">
+                        <span class="tool-top"><span class="tool-icon">▤</span><span class="tool-index">04 / 07</span></span>
+                        <span class="tool-name">Contrapiso</span>
+                        <span class="tool-description">Volumen y agregados</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-techo" data-calculator="techo" type="button">
+                        <span class="tool-top"><span class="tool-icon">⌂</span><span class="tool-index">05 / 07</span></span>
+                        <span class="tool-name">Techo</span>
+                        <span class="tool-description">Materiales por superficie</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-pisos" data-calculator="pisos" type="button">
+                        <span class="tool-top"><span class="tool-icon">▧</span><span class="tool-index">06 / 07</span></span>
+                        <span class="tool-name">Pisos</span>
+                        <span class="tool-description">Área con 10 % adicional</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-pintura" data-calculator="pintura" type="button">
+                        <span class="tool-top"><span class="tool-icon">◕</span><span class="tool-index">07 / 07</span></span>
+                        <span class="tool-name">Pintura</span>
+                        <span class="tool-description">Litros según superficie</span>
+                        <span class="tool-link">Empezar cálculo <span>↗</span></span>
+                    </button>
+                    <button class="tool-card tool-card-exit" type="button" id="exit-secondary">
+                        <span class="tool-top"><span class="tool-icon">↗</span><span class="tool-index">08 / 08</span></span>
+                        <span class="tool-name">Cerrar sesión</span>
+                        <span class="tool-description">Volver a la pantalla de acceso</span>
+                        <span class="tool-link">Salir de mi cuenta ↗</span>
+                    </button>
+                </section>
+
+                <!-- Área de Trabajo (Calculadora) -->
+                <section class="workspace hidden" id="workspace" aria-labelledby="calc-heading">
+                    <div class="workspace-header">
+                        <div>
+                            <span class="eyebrow">MI NUEVA ESTIMACIÓN</span>
+                            <h2 id="calc-heading">Calculadora</h2>
+                            <p class="muted" id="calc-help"></p>
+                        </div>
+                        <button class="icon-button" id="close-calculator" type="button" aria-label="Cerrar calculadora">✕</button>
+                    </div>
+                    <div class="workspace-columns">
+                        <form id="calculator-form" class="calculator-form" novalidate>
+                            <div id="dynamic-fields" class="fields-grid"></div>
+                            <p class="form-message" id="calculator-message" role="alert" aria-live="polite"></p>
+                            <button class="btn btn-primary" type="submit">Calcular y guardar →</button>
+                        </form>
+                        <aside id="result-panel" class="result-panel" aria-live="polite">
+                            <span class="result-label">TU RESULTADO</span>
+                            <div class="result-placeholder">Completa las medidas y conoce los materiales necesarios.</div>
+                        </aside>
+                    </div>
+                </section>
+
+                <!-- Historial (CRUD) -->
+                <section class="history-section" id="history">
+                    <div class="history-head">
+                        <div>
+                            <span class="eyebrow">TODOS TUS PROYECTOS</span>
+                            <h2>Historial de cálculos</h2>
+                            <p class="muted">Revisa tus estimaciones, modifica las medidas o elimina registros.</p>
+                        </div>
+                        <span class="count-chip" id="history-count">0 registros</span>
+                    </div>
+                    <div class="table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Fecha</th>
+                                    <th>Tipo de cálculo</th>
+                                    <th>Resumen del resultado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>
+                            <tbody id="history-body"></tbody>
+                        </table>
+                        <div class="empty-history" id="empty-history">
+                            <div class="empty-icon">✧</div>
+                            <strong>Tu historia comienza aquí</strong>
+                            <p>Haz tu primer cálculo y aparecerá guardado en este espacio.</p>
+                        </div>
+                    </div>
+                </section>
+
+                <footer class="dashboard-footer">
+                    © 2026 ObraMetric Studio · Estimaciones orientativas, revisa las unidades antes de comprar.
+                </footer>
+            </main>
+        </div>
+    </div>
+    <div class="menu-overlay" id="menu-overlay"></div>
+</body>
+</html>
